@@ -26,12 +26,16 @@ struct Hero: Codable {
     var name: String
     var about: String
     var thumbnail: Thumbnail
-    var url: [HeroUrl]
+    var urls: [HeroUrl]
 }
 
 struct Thumbnail: Codable {
     var path: String
     var thumbnailExtension: String
+    
+    var url: String {
+        return path + "." + thumbnailExtension
+    }
     
     enum CodingKeys: String, CodingKey {
         case path

@@ -33,13 +33,17 @@ class Service {
         let apiURL = baseUrl + "offset=\(offset)&limit=\(limit)&" + startsWith +  credentials()
         
         AF.request(apiURL).responseJSON { (response) in
-            guard let data = response.data,
-                  let marvelInfo = try? JSONDecoder().decode(MarvelResult.self, from: data),
-                  marvelInfo.code == 200 else {
-                  onComplete(nil)
-                  return
+            guard let data = response.data else {
+                onComplete(nil)
+                return
             }
-            onComplete(marvelInfo)
+            do {
+              let marvelInfo = try JSONDecoder().decode(MarvelResult.self, from: data)
+              onComplete(marvelInfo)
+            } catch {
+                print(error.localizedDescription)
+                onComplete(nil)
             }
         }
     }
+}

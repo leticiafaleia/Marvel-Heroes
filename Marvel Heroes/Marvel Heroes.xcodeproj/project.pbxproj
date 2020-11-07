@@ -18,6 +18,7 @@
 		AEA0BA852554F7A000F8D153 /* HeroTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA0BA842554F7A000F8D153 /* HeroTableViewController.swift */; };
 		AEBAED7C2555E20B00EBF582 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBAED7B2555E20B00EBF582 /* Service.swift */; };
 		AEBAED7F2555E22400EBF582 /* MarvelClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBAED7E2555E22400EBF582 /* MarvelClass.swift */; };
+		AEBAED82255624F600EBF582 /* HeroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBAED81255624F600EBF582 /* HeroTableViewCell.swift */; };
 		FB99D6E128F31EDBD50C45DD /* Pods_Marvel_Heroes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94958F00DDA2C0D0AA140326 /* Pods_Marvel_Heroes.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		AEA0BA842554F7A000F8D153 /* HeroTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTableViewController.swift; sourceTree = "<group>"; };
 		AEBAED7B2555E20B00EBF582 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		AEBAED7E2555E22400EBF582 /* MarvelClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelClass.swift; sourceTree = "<group>"; };
+		AEBAED81255624F600EBF582 /* HeroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTableViewCell.swift; sourceTree = "<group>"; };
 		DA39C93D2399E7D9F53CC8BF /* Pods-Marvel Heroes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel Heroes.debug.xcconfig"; path = "Target Support Files/Pods-Marvel Heroes/Pods-Marvel Heroes.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 				AE744BB62554FBC9005ED3B0 /* HeroViewController.swift */,
 				AEBAED7B2555E20B00EBF582 /* Service.swift */,
 				AEBAED7E2555E22400EBF582 /* MarvelClass.swift */,
+				AEBAED81255624F600EBF582 /* HeroTableViewCell.swift */,
 			);
 			path = "Marvel Heroes";
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				AE744BB72554FBC9005ED3B0 /* HeroViewController.swift in Sources */,
 				AEA0BA742554F6FA00F8D153 /* ViewController.swift in Sources */,
 				AEA0BA852554F7A000F8D153 /* HeroTableViewController.swift in Sources */,
+				AEBAED82255624F600EBF582 /* HeroTableViewCell.swift in Sources */,
 				AEA0BA702554F6FA00F8D153 /* AppDelegate.swift in Sources */,
 				AEA0BA722554F6FA00F8D153 /* SceneDelegate.swift in Sources */,
 				AEBAED7F2555E22400EBF582 /* MarvelClass.swift in Sources */,
