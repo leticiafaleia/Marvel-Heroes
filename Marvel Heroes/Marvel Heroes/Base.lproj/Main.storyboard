@@ -84,7 +84,7 @@
                             <constraint firstItem="G8z-iZ-TmO" firstAttribute="top" secondItem="895-7f-FEf" secondAttribute="top" constant="52" id="wU5-I6-aQa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Search a Hero" id="54N-Dd-bty">
+                    <navigationItem key="navigationItem" title="Search a Hero" largeTitleDisplayMode="always" id="54N-Dd-bty">
                         <barButtonItem key="backBarButtonItem" title=" " id="sa7-8c-QV7"/>
                     </navigationItem>
                     <connections>
@@ -149,7 +149,7 @@
                                         <constraint firstItem="sEf-mg-oq0" firstAttribute="leading" secondItem="Aki-LY-asC" secondAttribute="trailing" constant="8" id="zjT-ac-Cp7"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="heroAbout" destination="L3s-sd-nOJ" id="kkA-Yz-3Vo"/>
                                     <outlet property="heroImage" destination="Aki-LY-asC" id="fnL-1Y-1EN"/>

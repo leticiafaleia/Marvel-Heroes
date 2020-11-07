@@ -28,7 +28,7 @@ class HeroTableViewCell: UITableViewCell {
     
     func prepareCell(with hero: Hero){
         heroName.text = hero.name
-        heroAbout.text = hero.about
+        heroAbout.text = hero.description
         if let imageUrl = URL(string: hero.thumbnail.url) {
             heroImage.kf.indicatorType = .activity
             heroImage.kf.setImage(with: imageUrl)

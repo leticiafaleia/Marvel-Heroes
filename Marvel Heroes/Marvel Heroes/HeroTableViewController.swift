@@ -12,7 +12,7 @@ class HeroTableViewController: UITableViewController {
     var name: String?
     var heroes: [Hero] = []
     var loadingHeroes = false
-    var currentPage: Int = 0
+    var currentPage = 0
     var total = 0
     var label: UILabel = {
         let label = UILabel()
@@ -32,16 +32,17 @@ class HeroTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
+      
     func loadHeroes(){
         loadingHeroes = true
         Service.fetchHeroes(name: name, page: currentPage) { (heroInfo) in
             if let hero = heroInfo {
                 self.heroes += hero.data.results
                 self.total = hero.data.total
+                print("Total: ", self.total, "Já inclusos: ", self.heroes.count)
                 DispatchQueue.main.async {
                     self.loadingHeroes = false
-                    self.label.text = "\(self.name) not found!"
+                    self.label.text = "\(self.name!) not found!"
                     self.tableView.reloadData()
                 }
             }
@@ -50,7 +51,6 @@ class HeroTableViewController: UITableViewController {
     
 
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundView = heroes.count == 0 ? label : nil
         return heroes.count
@@ -58,7 +58,6 @@ class HeroTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HeroTableViewCell
-        
         let hero = heroes[indexPath.row]
         cell.prepareCell(with: hero)
         return cell

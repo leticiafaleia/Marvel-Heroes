@@ -8,42 +8,42 @@
 import Foundation
 
 struct MarvelResult: Codable {
-    var code: Int
-    var status: String
-    var data: MarvelData
+    var code: String
+    var status: String?
+    let data: MarvelData
 }
 
 struct MarvelData: Codable {
-    var offset: Int
-    var limit: Int
+    let offset: Int
+    let limit: Int
     var total: Int
     var count: Int
     var results: [Hero]
 }
 
 struct Hero: Codable {
-    var id: Int
-    var name: String
-    var about: String
-    var thumbnail: Thumbnail
-    var urls: [HeroUrl]
+    let id: Int
+    let name: String
+    let description: String
+    let thumbnail: Thumbnail
+    let urls: [HeroUrl]
 }
 
 struct Thumbnail: Codable {
-    var path: String
-    var thumbnailExtension: String
+    let path: String
+    let tbExt: String
     
     var url: String {
-        return path + "." + thumbnailExtension
+        return path + "." + tbExt
     }
     
     enum CodingKeys: String, CodingKey {
         case path
-        case thumbnailExtension = "extension"
+        case tbExt = "extension"
     }
 }
 
 struct HeroUrl: Codable {
-    var type: String
-    var url: String
+    let type: String?
+    let url: String?
 }
