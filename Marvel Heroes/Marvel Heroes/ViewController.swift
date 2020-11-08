@@ -22,8 +22,8 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         tfName.resignFirstResponder()
-        let viewController = segue.destination as! HeroTableViewController
-        viewController.name = tfName.text
+        let vc = segue.destination as! HeroTableViewController
+        vc.name = tfName.text
     }
 
 }

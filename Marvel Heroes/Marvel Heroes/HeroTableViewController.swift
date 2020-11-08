@@ -11,8 +11,8 @@ class HeroTableViewController: UITableViewController {
     
     var name: String?
     var heroes: [Hero] = []
-    var loadingHeroes = false
-    var currentPage = 0
+    var loadingHeroes: Bool = false
+    var currentPage: Int = 0
     var total = 0
     var label: UILabel = {
         let label = UILabel()
@@ -39,7 +39,8 @@ class HeroTableViewController: UITableViewController {
             if let hero = heroInfo {
                 self.heroes += hero.data.results
                 self.total = hero.data.total
-                print("Total: ", self.total, "Já inclusos: ", self.heroes.count)
+                print(self.total, "Total")
+                print(self.heroes.count, "Heroes")
                 DispatchQueue.main.async {
                     self.loadingHeroes = false
                     self.label.text = "\(self.name!) not found!"

@@ -4,21 +4,21 @@
 //
 //  Created by Letícia on 06/11/20.
 //
-
 import Foundation
+import UIKit
 
-struct MarvelResult: Codable {
-    var code: String
-    var status: String?
+struct MarvelInfo: Codable {
+    let code: Int
+    let status: String
     let data: MarvelData
 }
 
 struct MarvelData: Codable {
     let offset: Int
     let limit: Int
-    var total: Int
-    var count: Int
-    var results: [Hero]
+    let total: Int
+    let count: Int
+    let results: [Hero]
 }
 
 struct Hero: Codable {
@@ -26,24 +26,26 @@ struct Hero: Codable {
     let name: String
     let description: String
     let thumbnail: Thumbnail
-    let urls: [HeroUrl]
+    let urls: [HeroURL]
+
 }
 
 struct Thumbnail: Codable {
     let path: String
-    let tbExt: String
-    
+    let ext: String
+
     var url: String {
-        return path + "." + tbExt
+        return path + "." + ext
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case path
-        case tbExt = "extension"
+        case ext = "extension"
     }
+
 }
 
-struct HeroUrl: Codable {
-    let type: String?
-    let url: String?
+struct HeroURL: Codable {
+    let type: String
+    let url: String
 }

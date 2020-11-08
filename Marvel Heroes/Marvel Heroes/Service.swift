@@ -11,12 +11,12 @@ import SwiftHash
 
 class Service {
     
-    static private var baseUrl = "https://gateway.marvel.com:443/v1/public/characters"
+    static private var baseUrl = "https://gateway.marvel.com/v1/public/characters?"
     static private let privateKey = "4dacddd2fc958262ab6e15830910d432de6cde7b"
     static private let publicKey = "620a7824293e0a833877dc1f2c6a141a"
     static private var limit = 50
     
-    class func fetchHeroes(name: String?, page: Int = 0, onComplete: @escaping (MarvelResult?) -> Void){
+    class func fetchHeroes(name: String?, page: Int = 0, onComplete: @escaping (MarvelInfo?) -> Void){
         
         let offset = page * limit
         let startsWith: String
@@ -35,7 +35,7 @@ class Service {
                 return
             }
             do {
-                let marvelInfo = try JSONDecoder().decode(MarvelResult.self, from: data)
+                let marvelInfo = try JSONDecoder().decode(MarvelInfo.self, from: data)
                 onComplete(marvelInfo)
             } catch DecodingError.keyNotFound(let key, let context) {
                 Swift.print("could not find key \(key) in JSON: \(context.debugDescription)")
@@ -52,7 +52,7 @@ class Service {
     }
     
     private class func credentials() -> String {
-        let ts = Date().timeIntervalSinceNow
+        let ts = Date().timeIntervalSince1970
         let timeStamp = String(ts)
         let hash = (timeStamp+privateKey+publicKey)
         print(hash, "hash sem md5")
