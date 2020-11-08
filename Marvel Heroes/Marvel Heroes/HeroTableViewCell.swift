@@ -26,7 +26,7 @@ class HeroTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func prepareCell(with hero: Hero){
+    func prepareHero(with hero: Hero){
         heroName.text = hero.name
         heroAbout.text = hero.description
         if let imageUrl = URL(string: hero.thumbnail.url) {

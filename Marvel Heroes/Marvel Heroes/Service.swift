@@ -12,8 +12,8 @@ import SwiftHash
 class Service {
     
     static private var baseUrl = "https://gateway.marvel.com/v1/public/characters?"
-    static private let privateKey = "4dacddd2fc958262ab6e15830910d432de6cde7b"
-    static private let publicKey = "620a7824293e0a833877dc1f2c6a141a"
+    static private let privateKey = "d74876aed220ccb77e0dc11295606ea513f23cb7"
+    static private let publicKey = "330d36db4dc523b5bb99b32206ad008e"
     static private var limit = 50
     
     class func fetchHeroes(name: String?, page: Int = 0, onComplete: @escaping (MarvelInfo?) -> Void){
@@ -21,7 +21,7 @@ class Service {
         let offset = page * limit
         let startsWith: String
         if let name = name, !name.isEmpty {
-            startsWith = "nameStartsWith=\(name.replacingOccurrences(of: " ", with: ""))&"
+            startsWith = "nameStartsWith=\(name.replacingOccurrences(of: " ", with: ""))"
         } else {
             startsWith = ""
         }
@@ -30,35 +30,19 @@ class Service {
         print(apiURL)
         
         AF.request(apiURL).responseJSON { (response) in
-            guard let data = response.data else {
-                onComplete(nil)
-                return
+            guard let data = response.data,
+                let marvelInfo = try? JSONDecoder().decode(MarvelInfo.self, from: data),
+                marvelInfo.code == 200 else {
+                    onComplete(nil)
+                    return
             }
-            do {
-                let marvelInfo = try JSONDecoder().decode(MarvelInfo.self, from: data)
-                onComplete(marvelInfo)
-            } catch DecodingError.keyNotFound(let key, let context) {
-                Swift.print("could not find key \(key) in JSON: \(context.debugDescription)")
-            } catch DecodingError.valueNotFound(let type, let context) {
-                Swift.print("could not find type \(type) in JSON: \(context.debugDescription)")
-            } catch DecodingError.typeMismatch(let type, let context) {
-                Swift.print("type mismatch for type \(type) in JSON: \(context.debugDescription)")
-            } catch DecodingError.dataCorrupted(let context) {
-                Swift.print("data found to be corrupted in JSON: \(context.debugDescription)")
-            } catch let error as NSError {
-                NSLog("Error in read(from:ofType:) domain= \(error.domain), description= \(error.localizedDescription)")
-            }
+            onComplete(marvelInfo)
         }
     }
     
     private class func credentials() -> String {
-        let ts = Date().timeIntervalSince1970
-        let timeStamp = String(ts)
-        let hash = (timeStamp+privateKey+publicKey)
-        print(hash, "hash sem md5")
-        let hashMD5 = MD5(hash).lowercased()
-        print(hashMD5, "hash com md5")
-        return "ts=\(timeStamp)&apiKey=\(publicKey)&hash=\(hashMD5)"
+        let ts = String(Date().timeIntervalSince1970)
+        let hash = MD5(ts+privateKey+publicKey).lowercased()
+        return "&ts=\(ts)&apikey=\(publicKey)&hash=\(hash)"
     }
-    
 }
