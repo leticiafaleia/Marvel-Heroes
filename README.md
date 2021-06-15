@@ -28,6 +28,3 @@ Na primeira tela do app é exibido um campo onde permite pesquisar um Herói da 
 - Após pesquisar um herói será exibida na TableView uma lista com os heróis que possuam o nome pesquisado, caso contrário exibirá e mensagem "Hero, not found", 
 
 <img src="/Images/launchScreen.png" alt="launchScreen" width="200"/> <img src="/Images/searchScreen.png" alt="searchScreen" width="200"/>   <img src="/Images/loadingScreen.png" alt="loadingScreen" width="200"/> <img src="/Images/resultScreen.png" alt="resultScreen" width="200"/> <img src="/Images/heroDetails.png" alt="heroDetails" width="200"/>
-
-## Funcionamento
-Esse aplicativo foi desenvolvido através do curso do professor Eric Brito.
